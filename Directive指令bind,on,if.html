@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<a v-bind:href="url">链接</a>
+		<img v-bind:src="imgUrl" alt="">
+		<p v-if="show">点击按钮控制文字隐藏</p>
+		<button v-on:click="handleClose">按钮</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				url: 'https://www.baidu.com',
+				imgUrl: 'img/pic.jpg',
+				show:true,
+			},
+			methods: {
+				handleClose: function() {
+					this.show = false;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
