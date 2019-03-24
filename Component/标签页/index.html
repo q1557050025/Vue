@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="app">
+		<tabs>
+			<pane label="标签1" name='1'>
+				标签页1的内容
+			</pane>
+			<pane label="标签2" name='2'>
+				标签页2的内容
+			</pane>
+			<pane label="标签3" name='3'>
+				标签页3的内容
+			</pane>
+		</tabs>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="pane.js"></script>
+	<script src="tabs.js"></script>
+	<script type="text/x-template" id="tabs">
+		<div class="tabs">
+			<div class="tabs-bar">
+				<div
+					v-for="(tab, index) in getTabs()"
+					:class="clsTab(index)">
+				{{tab.label}}
+				</div>
+			</div>
+			<div class="tabs-content">
+				<slot></slot>
+			</div>
+		</div>
+	</script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+		})
+	</script>
+</body>
+
+</html>

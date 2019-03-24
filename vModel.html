@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		div{
+			border: 1px solid orange;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<input type="text" v-model="message" placeholder="输入...">
+		<textarea name="" id="" cols="30" rows="10" v-model="text"></textarea>
+		<p>input输入的内容是 {{message}}</p>
+		<p>textarea输入的内容是: {{text}}</p>
+	</div>
+
+	<div id="radioSingle">
+		<input type="radio" :checked="picked">
+		<label>单选按钮</label>
+	</div>
+
+	<div id="radio">
+		<input type="radio" v-model="picked" value="html" id="html">
+		<label for="html">HTML</label>
+
+		<input type="radio" v-model="picked" value="js" id="js">
+		<label for="js">JavaScript</label>
+
+		<input type="radio" v-model="picked" value="css" id="css">
+		<label for="css">CSS</label>
+
+		<h1>选择的vlaue:{{picked}}</h1>
+	</div>
+
+	<div id="checkbox">
+		<input type="checkbox" v-model="checked" value="html" id="html">
+		<label for="html">HTML</label>
+
+		<input type="checkbox" v-model="checked" value="javascript" id="javascript">
+		<label for="javascript">JavaScript</label>
+
+		<input type="checkbox" v-model="checked" value="css" id="css">
+		<label for="css">CSS</label>
+
+
+		<input type="checkbox" v-model="checked" value="css" id="test">
+		<label for="css">text</label>
+
+		<h1>{{checked}}</h1>
+	</div>
+
+	<div id="select">
+		<select name="" id="" v-model="selected">
+			<option value="html">html</option>
+			<option value="js">javascript</option>
+			<option value="css">css</option>
+			<option>no value</option>
+		</select>
+
+		<h1>{{selected}}</h1>
+	</div>
+
+	<div id="selectMultiple">
+		<select name="" id="" v-model="selected" multiple>
+			<option value="html">html</option>
+			<option value="js">javascript</option>
+			<option value="css">css</option>
+			<option>no value</option>
+		</select>
+
+		<h1>{{selected}}</h1>
+	</div>
+
+	<div id="optionVfor">
+		<select name="" id="" v-model="selected">
+			<option :value="option.value" v-for="(option, index) in options">{{option.value}}</option>
+		</select>
+		<h1>{{selected}}</h1>
+	</div>
+
+	<div id="checkboxVbind">
+		<input type="checkbox" v-model="toggle" :true-value="trueValue" :false-value="falseValue">
+		<input type="checkbox" v-model="toggle" :true-value="trueValue" :false-value="falseValue">
+		<input type="checkbox" v-model="toggle" :true-value="trueValue" :false-value="falseValue">
+
+		<h1>{{toggle}}</h1>
+		<h1>{{trueValue}}</h1>
+		<h1>{{falseValue}}</h1>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="vModel.js"></script>
+</body>
+</html>

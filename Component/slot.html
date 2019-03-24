@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		* {
+			border: solid 1px pink;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="test">
+		<test-component></test-component>
+	</div>
+
+	<div id="app">
+		<child-component>
+			<h2 slot="header">标题</h2>
+			<p>正文内容</p>
+			<p>更多正文内容</p>
+			<div slot="footer">底部信息</div>
+		</child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		Vue.component('test-component', {
+			template: '\
+			<div>\
+				<slot>\
+					<p>如果父组件没有插入内容,我会默认出现</p>\
+				</slot>\
+			</div>'
+		});
+
+		var test = new Vue({
+			el: "#test",
+		});
+
+		Vue.component('child-component', {
+			template: '\
+				<div class="container">\
+					<div class="header">\
+						<slot name="header"></slot>\
+					</div>\
+					<div class="main">\
+						<slot></slot>\
+					</div>\
+					<div class="footer">\
+						<slot name="footer"></slot>\
+					</div>\
+				</div>\
+			'
+		})
+
+		var app = new Vue({
+			el: "#app"
+		})
+	</script>
+</body>
+
+</html>

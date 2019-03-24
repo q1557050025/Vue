@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		div{
+			border: solid 1px orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+		<my-component2></my-component2>
+		<table>
+			<tbody is="my-component"></tbody>
+		</table>
+		<my-component3></my-component3>
+		<div>
+				<data-component></data-component>
+				<data-component></data-component>
+				<data-component></data-component>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		Vue.component('my-component', {
+			template: '<div>这里是component内容</div>'
+		})
+
+		Vue.component('my-component3',{
+			template:'<div>这是component3,message:{{message}}</div>',
+			data: function() {
+				return {
+					message: '这是message'
+				}
+			}
+		})
+		
+		var child = {template:"<div>这里是局部注册的组件</div>"};
+		var data = {
+			counter: 0
+		}
+		Vue.component('data-component',{
+			template: "<button @click = 'counter++'>{{counter}}</button>",
+			data: function() {
+				return data//引用外部对象,外部对象共享
+			}
+		})
+
+		var app = new Vue({
+			el: "#app",
+			components: {
+				'my-component2': child,
+			}
+		})	
+	</script>
+</body>
+</html>

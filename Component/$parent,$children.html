@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		*{
+			border: solid 1px orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="parent">
+		{{message}}
+		<component-a></component-a>
+	</div>
+
+	<div id="children">
+		<button @click="handleRef">通过ref获取子组件实例</button>
+		<component-b ref="comA" id="component-b"></component-b>
+		<p id="p" ref="p">内容</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		Vue.component('component-a', {
+			template: '<button @click="handleEvent">通过父链直接修改数据</button>',
+			methods: {
+				handleEvent: function() {
+					this.$parent.message = '来自组件component-a的内容';
+				}
+			}
+		});
+
+		Vue.component('component-b', {
+			template: '<div>子组件</div>',
+			data: function() {
+				return {
+					message: '子组件内容'
+				};
+			}
+		});
+
+		var parent = new Vue({
+			el: "#parent",
+			data: {
+				message:'源数据'
+			}
+		})
+
+		var children = new Vue({
+			el: "#children",
+			methods: {
+				handleRef: function() {
+					//通过$refs来访问指定的实例
+					var msg = this.$refs.comA.message;
+					console.log(msg);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

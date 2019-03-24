@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>标签页</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<div id="app" v-cloak>
+		<!-- 此处vmode绑定的activeKey是什么 -->
+		<tabs v-model="activeKey">
+			<pane label="标签1" name="1">
+				标签1内容
+			</pane>
+			<pane label="标签2" name='2'>
+				标签2内容
+			</pane>
+			<pane label="标签3" name="3">
+				标签3内容
+			</pane>
+		</tabs>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="pane.js"></script>
+	<script src="tabs.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				activeKey: '1'
+			}
+		})
+	</script>
+</body>
+</html>
