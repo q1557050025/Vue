@@ -30,14 +30,20 @@
 		<div class="tabs">
 			<div class="tabs-bar">
 				<div
-					v-for="(tab, index) in getTabs()"
-					:class="clsTab(index)">
-				{{tab.label}}
+					v-for="(item, index) in navList"
+					:class="clsTab(item)"
+					@click="handleChange(index)">
+				{{item.label}}
 				</div>
 			</div>
 			<div class="tabs-content">
 				<slot></slot>
 			</div>
+		</div>
+	</script>
+	<script type="text/x-template" id="pane">
+		<div class="pane" v-show="show">
+			<slot></slot>
 		</div>
 	</script>
 	<script>
