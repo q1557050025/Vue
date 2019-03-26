@@ -12,7 +12,7 @@
 	<div id="app">
 		<div class="message">
 			<v-input v-model="username"></v-input>
-			<v-textarea v-model="message"></v-textarea>
+			<v-textarea v-model="message" ref="message" style="width:500px;height:200px;"></v-textarea>
 			<button @click="handleSend">发布</button>
 		</div>
 		<list :list="list" @reply="handleReply"></list>
